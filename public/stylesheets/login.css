@@ -1,0 +1,351 @@
+@font-face {
+    font-family: Gilroy;
+    src: url(/Font/Gilroy-Regular.woff);
+}
+
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(/Font/Gilroy-Bold.woff);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Gilroy;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+li {
+    list-style: none;
+}
+
+.main {
+    /* height: 100%; */
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 40px;
+    height: 110px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+}
+
+nav img {
+    width: 100px;
+}
+
+nav a {
+    font-weight: 500;
+    font-size: 18px;
+    font-family: Gilroy-Bold;
+}
+
+nav i {
+    display: none;
+}
+
+
+nav .part-2 ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+#slidebar {
+    width: 150px;
+    height: 100%;
+    background-color: gainsboro;
+    position: fixed;
+    right: 0;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    z-index: 9889;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    margin-top: 110px;
+}
+
+#slidebar a {
+    font-size: 16px;
+    color: #000;
+    font-family: Gilroy-Bold;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.login-page {
+    height: 100vh;
+    background-image: url('/images/hero-bg-image.webp');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    height: 400px;
+    width: 350px;
+    padding: 40px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.login h2 {
+    font-family: Gilroy-Bold;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.login button {
+    color: #fff;
+    background-color: #DA0000;
+    border: none;
+    font-family: Gilroy-Bold;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.login input {
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 6px;
+    font-family: Gilroy-Bold;
+    margin-top: 15px;
+}
+
+.login a {
+    font-size: 17px;
+}
+
+.login a span {
+    font-family: Gilroy-Bold;
+    color: #DA0000;
+}
+
+.register {
+    height: 480px;
+    width: 350px;
+    padding: 40px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.register h2 {
+    font-family: Gilroy-Bold;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.register button {
+    color: #fff;
+    background-color: #DA0000;
+    border: none;
+    font-family: Gilroy-Bold;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.register input {
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 6px;
+    font-family: Gilroy-Bold;
+    margin-top: 15px;
+}
+
+.register a {
+    font-size: 17px;
+}
+
+.register a span {
+    font-family: Gilroy-Bold;
+    color: #DA0000;
+}
+
+.admin-page {
+    height: 100vh;
+    background-image: url('/images/hero-bg-image.webp');
+    background-size: cover;
+    background-position: center;
+    padding-top: 110px;
+}
+
+.admin-page .part-1 {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.admin-page .part-1 i {
+    font-size: 30px;
+}
+
+.admin-page .part-1 .box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border: 2px solid #fff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    background-color: rgb(198, 19, 6);
+}
+
+.admin-page .part-2 {
+    margin-top: 40px;
+    width: 100%;
+    color: #fff;
+    overflow-x: auto;
+    /* Add horizontal scroll for small screens */
+}
+
+.admin-page .part-2 table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.admin-page .part-2 thead th {
+    font-family: Gilroy-Bold;
+    padding: 10px;
+}
+
+.admin-page .part-2 tbody td {
+    padding: 8px;
+    /* Adjust padding as necessary */
+}
+
+@media screen and (max-width:562px) {
+    nav .part-2 i {
+        display: initial;
+        font-size: 18px;
+    }
+
+    nav .part-2 a {
+        display: none;
+    }
+
+    nav .part-2 ul {
+        gap: 5px;
+    }
+
+    nav #home-btn {
+        display: initial;
+    }
+
+    .admin-page .part-1 {
+        gap: 20px;
+    }
+
+    .admin-page .part-1 i {
+        font-size: 20px;
+    }
+
+    .admin-page .part-1 h3 {
+        font-size: 14px;
+    }
+
+    .admin-page .part-1 .box {
+        display: flex;
+        gap: 10px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .admin-page .part-2 table {
+        font-size: 14px;
+        /* Reduce font size for smaller screens */
+    }
+}
+
+@media screen and (max-width:460px) {
+
+    #slidebar {
+        width: 140px;
+        margin-top: 70px;
+    }
+
+    nav {
+        padding: 20px;
+        height: 70px;
+    }
+
+    nav img {
+        width: 70px;
+    }
+
+    .login {
+        margin-top: 70px;
+    }
+
+    .register {
+        margin-top: 70px;
+        height: 500px;
+    }
+
+    .register h2 {
+        font-size: 25px;
+    }
+
+    .admin-page {
+        padding-top: 70px;
+    }
+
+    .admin-page .part-1 {
+        gap: 15px;
+    }
+
+    .admin-page .part-1 i {
+        font-size: 15px;
+    }
+
+    .admin-page .part-1 .box {
+        gap: 6px;
+        padding: 10px;
+        margin-top: 20px;
+    }
+}

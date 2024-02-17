@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+
+<body>
+    <div class="main">
+        <nav>
+            <div class="part-1">
+                <img src="/images/Foodosnx logo.png" alt="">
+            </div>
+            <div class="part-2">
+                <ul>
+                    <li><a id="home-btn" href="/adminDashboard">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                    <h4><i style="color: white;" class="ri-menu-line"></i></h4>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="slidebar">
+            <a href="/adminDashboard">Dashboard</a>
+            <a href="/profile">Profile</a>
+            <a href="/settings">Settings</a>
+            <a href="/logout">Log Out</a>
+        </div>
+        <div class="admin-page">
+            <div class="part-1">
+                <div class="add-items box">
+                    <i class="ri-add-box-line"></i>
+                    <h3>Add Items</h3>
+                </div>
+                <div class="manage-items box">
+                    <i class="ri-image-edit-line"></i>
+                    <h3>Manage Items</h3>
+                </div>
+                <div class="manage-contact-details box">
+                    <i class="ri-edit-2-line"></i>
+                    <h3>Manage Contact Details</h3>
+                </div>
+            </div>
+            <div class="part-2">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allUsers.forEach(function(user) { %>
+                            <tr>
+                                <td>
+                                    <%= user.fullname %>
+                                </td>
+                                <td>
+                                    <%= user.username %>
+                                </td>
+                                <td>
+                                    <%= user.email %>
+                                </td>
+                                <td>
+                                    <%= user.contact %>
+                                </td>
+                                <td>
+                                    <%= user.address %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <script src="/javascripts/navbar.js"></script>
+</body>
+
+</html>

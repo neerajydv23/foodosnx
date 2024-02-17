@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+
+<body>
+    <div class="main">
+        <nav>
+            <div class="part-1">
+                <img src="/images/Foodosnx logo.png" alt="">
+            </div>
+            <div class="part-2">
+                <ul>
+                    <li><a id="home-btn" href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <h4><i style="color: white;" class="ri-menu-line"></i></h4>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="slidebar">
+            <a href="/about">About</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/contact">Contact</a>
+            <a href="/gallery">Gallery</a>
+        </div>
+        <div class="login-page">
+            <div class="login">
+                <form action="/login" method="post">
+                    <h2>Login Account</h2>
+                    <%if(error.length>0){ %>
+                        <p class="flash-error"
+                            style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;">
+                            <%=error%>
+                        </p>
+                        <% } %>
+                            <input type="text" name="username" placeholder="Enter Username" required>
+                            <input type="password" name="password" placeholder="Enter Password" required>
+                            <button type="submit">Login</button>
+                </form>
+                <a href="/register">Don't have an account ?<span> Register </span></a>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="/javascripts/navbar.js"></script>
+</body>
+
+</html>
