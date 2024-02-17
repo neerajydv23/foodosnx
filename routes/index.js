@@ -8,12 +8,34 @@ passport.use(new localStrategy(userModel.authenticate()));
 
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index');
+router.get('/', async function (req, res, next) {
+  const admin = await userModel.findOne({role: 'admin'});
+  res.render('index',{admin});  //passing admin to display its contact dets
 });
-router.get('/adminDashboard', isLoggedIn, async function (req, res, next) {
+router.get('/adminDashboard', isAdmin, async function (req, res, next) {
   const allUsers = await userModel.find({});
   res.render('adminDashboard', { allUsers });
+});
+router.get('/manageContactDetails', isAdmin, async function(req, res) {
+  const admin = await userModel.findOne({role: 'admin'});
+  res.render('manageContactDetails', {admin});
+});
+router.post("/manageContactDetails",isAdmin, async function(req,res){
+  const admin = await userModel.findOneAndUpdate(    
+    {role: 'admin'},
+    {username: req.body.username, 
+    fullname:req.body.fullname,
+    email:req.body.email,
+    contact:req.body.contact,
+    contactTwo: req.body.contactTwo,
+    contactThree: req.body.contactThree,
+    address:req.body.address,
+  },
+    {new: true}
+    );
+
+    await admin.save();
+    res.redirect('/adminDashboard');
 });
 router.get('/login', function (req, res, next) {
   res.render('login', { error: req.flash('error') });
@@ -65,6 +87,11 @@ router.get('/logout', function (req, res, next) {
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
+  res.redirect('/login');
+}
+
+function isAdmin(req, res, next) {
+  if (req.isAuthenticated() && req.user.role === 'admin') return next();
   res.redirect('/login');
 }
 

@@ -8,6 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="/stylesheets/login.css">
 </head>
+<style>
+    form input {
+        color: grey;
+    }
+</style>
 
 <body>
     <div class="main">
@@ -17,9 +22,9 @@
             </div>
             <div class="part-2">
                 <ul>
-                    <li><a id="home-btn" href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a id="home-btn" href="/adminDashboard">Home</a></li>
+                    <li><a href="/adminDashboard">About</a></li>
+                    <li><a href="/adminDashboard">Contact</a></li>
                     <li><a href="/login">Login</a></li>
                     <h4><i style="color: white;" class="ri-menu-line"></i></h4>
                 </ul>
@@ -27,21 +32,41 @@
         </nav>
 
         <div id="slidebar">
-            <a href="/about">About</a>
+            <a href="/adminDashboard">About</a>
             <a href="/login">Login</a>
             <a href="/register">Register</a>
-            <a href="/contact">Contact</a>
-            <a href="/gallery">Gallery</a>
+            <a href="/adminDashboard">Contact</a>
+            <a href="/adminDashboard">Gallery</a>
         </div>
         <div class="login-page">
-            <div class="login">
-
+            <div class="login" style="height: fit-content;">
+                <h1>Manage Contact Details</h1>
+                <form action="/manageContactDetails" method="POST">
+                    <input type="text" name="fullname" placeholder="Full Name" value="<%=admin.fullname%>">
+                    <input type="text" name="username" placeholder="Username" value="<%=admin.username%>">
+                    <input type="email" name="email" placeholder="Email" value="<%=admin.email%>">
+                    <input type="number" name="contact" placeholder="Contact" value="<%=admin.contact%>">
+                    <input type="number" name="contactTwo" placeholder="Contact Number-2" value="<%=admin.contactTwo%>">
+                    <input type="number" name="contactThree" placeholder="Contact Number-3" value="<%=admin.contactThree%>">
+                    <input type="text" name="address" placeholder="Address" value="<%=admin.address%>">
+                    <div class="buttons">
+                        <button id="cancel-btn">Cancel</button>
+                        <button type="submit" style="background-color: green;">Update</button>
+                    </div>
+                </form>
             </div>
 
         </div>
 
     </div>
     <script src="/javascripts/navbar.js"></script>
+    <script>
+        const cancelBtn = document.getElementById('cancel-btn');
+        cancelBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.href = '/adminDashboard';
+        });
+    </script>
 </body>
 
 </html>

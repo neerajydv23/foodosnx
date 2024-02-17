@@ -49,6 +49,12 @@ const userSchema = mongoose.Schema({
     }},
     required: true
     },
+    contactTwo:{
+      type:String
+    },
+    contactThree:{
+      type:String
+    },
   city:{
     type: String
   },
