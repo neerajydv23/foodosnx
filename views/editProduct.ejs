@@ -43,16 +43,13 @@
         </div>
         <div class="login-page">
             <div class="login" style="height: fit-content;">
-                <h1>Manage Contact Details</h1>
-                <form action="/manageContactDetails" method="POST">
-                    <input type="text" name="fullname" placeholder="Full Name" value="<%=admin.fullname%>">
-                    <input type="text" name="username" placeholder="Username" value="<%=admin.username%>">
-                    <input type="email" name="email" placeholder="Email" value="<%=admin.email%>">
-                    <input type="number" name="contact" placeholder="Contact" value="<%=admin.contact%>">
-                    <input type="number" name="contactTwo" placeholder="Contact Number-2" value="<%=admin.contactTwo%>">
-                    <input type="number" name="contactThree" placeholder="Contact Number-3" value="<%=admin.contactThree%>">
-                    <input type="text" name="address" placeholder="Address" value="<%=admin.address%>">
-                    <div class="buttons">
+                <h1>Edit Product Details</h1>
+                <form action="/editProduct/<%=product._id%>" method="POST">
+                    
+                    <img style="height: 100px;width: 100px;" src="<%=product.productImage%>" alt="" >
+                    <input type="text" name="productName" placeholder="Product Name" value="<%=product.productName%>">
+                    <input type="text" name="productPrice" placeholder="Product Price" value="<%=product.productPrice%>">
+                    
                         <button id="cancel-btn">Cancel</button>
                         <button type="submit" style="background-color: green;">Update</button>
                     </div>
@@ -67,7 +64,7 @@
         const cancelBtn = document.getElementById('cancel-btn');
         cancelBtn.addEventListener('click', function (event) {
             event.preventDefault();
-            window.location.href = '/adminDashboard';
+            window.location.href = '/manageProducts';
         });
     </script>
 </body>

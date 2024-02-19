@@ -43,15 +43,11 @@
         </div>
         <div class="login-page">
             <div class="login" style="height: fit-content;">
-                <h1>Manage Contact Details</h1>
-                <form action="/manageContactDetails" method="POST">
-                    <input type="text" name="fullname" placeholder="Full Name" value="<%=admin.fullname%>">
-                    <input type="text" name="username" placeholder="Username" value="<%=admin.username%>">
-                    <input type="email" name="email" placeholder="Email" value="<%=admin.email%>">
-                    <input type="number" name="contact" placeholder="Contact" value="<%=admin.contact%>">
-                    <input type="number" name="contactTwo" placeholder="Contact Number-2" value="<%=admin.contactTwo%>">
-                    <input type="number" name="contactThree" placeholder="Contact Number-3" value="<%=admin.contactThree%>">
-                    <input type="text" name="address" placeholder="Address" value="<%=admin.address%>">
+                <h1>Create New Product </h1>
+                <form action="/addProducts" method="POST" enctype="multipart/form-data">
+                    <input type="text" name="productName" placeholder="Add Product Name">
+                    <input type="text" name="productPrice" placeholder="Add Product Price ">
+                    <input type="file" name="productImage">
                     <div class="buttons">
                         <button id="cancel-btn">Cancel</button>
                         <button type="submit" style="background-color: green;">Update</button>

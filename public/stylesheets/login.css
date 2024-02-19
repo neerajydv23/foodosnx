@@ -259,6 +259,26 @@ nav .part-2 ul {
     /* Adjust padding as necessary */
 }
 
+/* manage products css */
+.admin-products {
+    width: 100%;
+    color: #fff;
+    margin-top: 110px;
+    text-align: center;
+    overflow-x: auto;
+}
+
+.admin-products table {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.admin-products table thead th {
+    font-family: Gilroy-Bold;
+    padding: 10px;
+}
+
 @media screen and (max-width:562px) {
     nav .part-2 i {
         display: initial;
@@ -300,52 +320,79 @@ nav .part-2 ul {
         font-size: 14px;
         /* Reduce font size for smaller screens */
     }
-}
 
-@media screen and (max-width:460px) {
+    /* manage products css */
+    .admin-products {
 
-    #slidebar {
-        width: 140px;
-        margin-top: 70px;
+        margin-top: 0px;
+
     }
 
-    nav {
-        padding: 20px;
-        height: 70px;
-    }
-
-    nav img {
-        width: 70px;
-    }
-
-    .login {
-        margin-top: 70px;
-    }
-
-    .register {
-        margin-top: 70px;
-        height: 500px;
-    }
-
-    .register h2 {
-        font-size: 25px;
-    }
-
-    .admin-page {
-        padding-top: 70px;
-    }
-
-    .admin-page .part-1 {
-        gap: 15px;
-    }
-
-    .admin-page .part-1 i {
-        font-size: 15px;
-    }
-
-    .admin-page .part-1 .box {
-        gap: 6px;
-        padding: 10px;
+    .admin-products table {
         margin-top: 20px;
     }
+
+    .admin-products table thead th {
+        padding: 10px;
+    }
+
+    .admin-products table tbody td {
+        font-size: 14px;
+    }
+
+    .admin-products table tbody button {
+        font-size: 12px;
+        margin-top: 8px;
+    }
 }
+
+    @media screen and (max-width:460px) {
+
+        #slidebar {
+            width: 140px;
+            margin-top: 70px;
+        }
+
+        nav {
+            padding: 20px;
+            height: 70px;
+        }
+
+        nav img {
+            width: 70px;
+        }
+
+        .login {
+            margin-top: 70px;
+        }
+
+        .register {
+            margin-top: 70px;
+            height: 500px;
+        }
+
+        .register h2 {
+            font-size: 25px;
+        }
+
+        .admin-page {
+            padding-top: 70px;
+        }
+
+        .admin-page .part-1 {
+            gap: 15px;
+        }
+
+        .admin-page .part-1 i {
+            font-size: 15px;
+        }
+
+        .admin-page .part-1 .box {
+            gap: 6px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .admin-products h1{
+            font-size: 20px;
+        }
+    }

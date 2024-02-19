@@ -6,6 +6,7 @@ var logger = require('morgan');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
 require('dotenv').config();
+const fileUpload = require('express-fileupload');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -16,6 +17,10 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(fileUpload({
+  useTempFiles: true
+}))
 
 app.use(flash());
 app.use(expressSession({

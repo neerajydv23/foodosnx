@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<style>
+    .admin-products button {
+        background-color: #f44336;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+
+    <div class="main">
+        <nav>
+            <div class="part-1">
+                <img src="/images/Foodosnx logo.png" alt="">
+            </div>
+            <div class="part-2">
+                <ul>
+                    <li><a id="home-btn" href="/adminDashboard">Home</a></li>
+                    <li><a href="/adminDashboard">About</a></li>
+                    <li><a href="/adminDashboard">Contact</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <h4><i style="color: white;" class="ri-menu-line"></i></h4>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="slidebar">
+            <a href="/adminDashboard">About</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/adminDashboard">Contact</a>
+            <a href="/adminDashboard">Gallery</a>
+        </div>
+        <div class="login-page">
+            <!-- <div class="login" style="height: fit-content;">
+            </div> -->
+            <div class="admin-products">
+                <h1>Manage Products</h1>
+                <% if (successMessage) { %>
+                    <div class="flash-message success" style="font-size: 18px;color: orangered;margin: 10px 0;">
+                        <%= successMessage %>
+                    </div>
+                    <% } %>
+
+                        <!-- Display error flash message -->
+                        <% if (errorMessage) { %>
+                            <div class="flash-message error" style="font-size: 18px;color: orangered;">
+                                <%= errorMessage %>
+                            </div>
+                            <% } %>
+                                <table border="1">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Price</th>
+                                            <th>Product Image</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% products.forEach(function(product){ %>
+                                            <tr>
+                                                <td>
+                                                    <%= product.productName %>
+                                                </td>
+                                                <td>
+                                                    <%= product.productPrice %>
+                                                </td>
+                                                <td><img src="<%= product.productImage %>" alt="" style="width: 100px;">
+                                                </td>
+                                                <td>
+                                                    <a href="/editProduct/<%= product._id %>"><button
+                                                            style="background-color: yellowgreen;">Edit</button></a>
+                                                    <a
+                                                        href="/deleteProduct/<%= product._id %>"><button>Delete</button></a>
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                    </tbody>
+                                </table>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="/javascripts/navbar.js"></script>
+
+</body>
+
+</html>
