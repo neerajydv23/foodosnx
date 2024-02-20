@@ -8,6 +8,10 @@
   src: url(/Font/Gilroy-Bold.woff);
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -862,6 +866,10 @@ footer .part-2 i {
     gap: 10px;
   }
 
+  footer .part-2 i {
+    font-size: 14px;
+  }
+
 }
 
 @media screen and (max-width:375px) {
@@ -891,5 +899,17 @@ footer .part-2 i {
   .page-2 .shopping-cart {
     height: 30px;
     width: 30px;
+  }
+
+  footer h1 {
+    font-size: 13px;
+  }
+
+  footer .part-2 {
+    gap: 8px;
+  }
+
+  footer .part-2 i {
+    font-size: 13px;
   }
 }
