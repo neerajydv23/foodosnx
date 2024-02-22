@@ -165,6 +165,11 @@ nav .part-2 ul {
   transition: all 0.3s ease;
 }
 
+.hero .part-1 button:hover {
+  background-color: #991B1B;
+  transition: all 0.3s ease;
+}
+
 .hero .part-2 {
   width: 470px;
   height: 470px;
@@ -390,34 +395,37 @@ nav .part-2 ul {
   align-items: center;
   justify-content: center;
   gap: 60px;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 .page-4 .review-section .review {
   text-align: center;
-  padding-bottom: 20px;
+  padding: 10px;
   width: 400px;
-  height: 500px;
+  height: 300px;
   border: 1px solid #afadad;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .page-4 .review-section .review .top {
-  height: 70%;
+  height: 50%;
   width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .page-4 .review-section .review img {
   height: 100%;
-  width: 100%;
+  width: 35%;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .page-4 .review-section .review .bottom {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 15px;
   gap: 5px;
 }
 
@@ -434,8 +442,9 @@ nav .part-2 ul {
   width: 100%;
   background-color: #191919;
   display: flex;
-  justify-content: center;
-  gap: 80px;
+  /* justify-content: center; */
+  justify-content: space-between;
+  /* gap: 80px; */
   padding: 20px 40px;
   color: #fff;
 }
@@ -549,7 +558,7 @@ footer .part-2 i {
     gap: 30px;
     color: #fff;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
   }
 
   .sub-footer h1 {
@@ -557,12 +566,12 @@ footer .part-2 i {
   }
 
   .sub-footer ul {
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .sub-footer li {
     font-size: 16px;
-    margin-top: 20px;
+    margin-top: 15px;
   }
 }
 
@@ -682,15 +691,8 @@ footer .part-2 i {
     margin-top: 30px;
   }
 
-  .page-4 .review-section .review {
-    padding-bottom: 20px;
-    width: 400px;
-    height: 400px;
-
-  }
-
   .page-4 .review-section .review .bottom {
-    margin-top: 8px;
+    margin-top: 10px;
     gap: 3px;
   }
 
@@ -832,9 +834,8 @@ footer .part-2 i {
   }
 
   .page-4 .review-section .review {
-    padding-bottom: 20px;
     width: 350px;
-    height: 350px;
+    height: 270px;
   }
 
   .page-4 .review-section .review .bottom {
@@ -852,6 +853,16 @@ footer .part-2 i {
 
   .sub-footer {
     padding: 20px;
+    flex-direction: column;
+  }
+
+  .sub-footer h1 {
+    font-size: 22px;
+  }
+
+  .sub-footer li {
+    font-size: 15px;
+    margin-top: 15px;
   }
 
   footer {
