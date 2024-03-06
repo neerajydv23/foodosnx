@@ -1,0 +1,120 @@
+@workspace I have used cloudinary and file-upload for uploading images , tell me how can i upload pdfs also
+
+The process of uploading PDFs is similar to uploading images. You can use the same cloudinary.uploader.upload function and express-fileupload middleware. The express-fileupload middleware is not specific to images, it can handle any file type, including PDFs.
+
+Here's an example of how you can modify your existing code to handle PDF uploads:
+
+In your form where you're accepting file uploads, you can add another input for PDFs:
+<input type="file" name="productPDF">
+
+Then in your route where you handle the form submission, you can add code to handle the PDF upload:
+
+router.post('/addProducts', isAdmin, async function (req, res, next) {
+  const productImage = req.files.productImage;
+  const productPDF = req.files.productPDF;
+
+  // Upload image to Cloudinary
+  cloudinary.uploader.upload(productImage.tempFilePath, async function (err, imageResult) {
+    if (err) return next(err);
+
+    // Upload PDF to Cloudinary
+    cloudinary.uploader.upload(productPDF.tempFilePath, { resource_type: "raw" }, async function (err, pdfResult) {
+      if (err) return next(err);
+
+      const newProduct = new productModel({
+        productName: req.body.productName,
+        productPrice: req.body.productPrice,
+        productImage: imageResult.secure_url,
+        productPDF: pdfResult.secure_url, // Save the URL of the uploaded PDF
+      });
+
+      await newProduct.save();
+      req.flash('success', 'Product created successfully');
+      res.redirect('/manageProducts');
+    });
+  });
+});
+
+In the above code, we're uploading the PDF as a "raw" resource type, because Cloudinary treats non-image files as raw by default. We're also saving the URL of the uploaded PDF in the product model, so you can access it later.
+
+Remember to update your productModel to include a field for the PDF URL.
+
+
+Questions )can you upload files using uuid names and their extensions and upload the images and pdf separately
+
+Yes, you can upload files with UUID names and their extensions. You can use the uuid package to generate UUIDs. You can also upload images and PDFs separately. Here's how you can do it:
+
+First, install the uuid package:
+npm install uuid
+
+Then, in your route where you handle the form submission, you can generate a UUID for each file and use it as the public ID for the upload:
+
+const uuid = require('uuid');
+
+router.post('/addProducts', isAdmin, async function (req, res, next) {
+  const productImage = req.files.productImage;
+  const productPDF = req.files.productPDF;
+
+  // Generate UUIDs for the image and PDF
+  const imageUUID = uuid.v4();
+  const pdfUUID = uuid.v4();
+
+  // Upload image to Cloudinary
+  cloudinary.uploader.upload(productImage.tempFilePath, { public_id: imageUUID }, async function (err, imageResult) {
+    if (err) return next(err);
+
+    // Upload PDF to Cloudinary
+    cloudinary.uploader.upload(productPDF.tempFilePath, { resource_type: "raw", public_id: pdfUUID }, async function (err, pdfResult) {
+      if (err) return next(err);
+
+      const newProduct = new productModel({
+        productName: req.body.productName,
+        productPrice: req.body.productPrice,
+        productImage: imageResult.secure_url,
+        productPDF: pdfResult.secure_url, // Save the URL of the uploaded PDF
+      });
+
+      await newProduct.save();
+      req.flash('success', 'Product created successfully');
+      res.redirect('/manageProducts');
+    });
+  });
+});
+
+In the above code, we're generating a UUID for each file and passing it as the public_id option to the upload function. This will cause Cloudinary to use the UUID as the file name for the uploaded file. The file extension will be preserved.
+
+why is it making a tmp folder in my workspace , do i need it if my files are directly uploading to cloudinary and their name storing in the mongodb database
+
+The tmp folder is created by the express-fileupload middleware. When a file is uploaded, the middleware saves it to a temporary file in the tmp folder and adds a tempFilePath property to the file object, which contains the path to the temporary file. This is done so that the file can be read from disk when you want to do something with it, like upload it to Cloudinary.
+
+However, once the file has been uploaded to Cloudinary, the temporary file is no longer needed. The express-fileupload middleware does not automatically delete the temporary file, so you have to do it yourself if you want to clean up the tmp folder.
+
+You can use the fs.unlink function to delete the temporary file after it has been uploaded to Cloudinary:
+const fs = require('fs');
+
+// ...
+
+// Upload image to Cloudinary
+cloudinary.uploader.upload(productImage.tempFilePath, { public_id: imageUUID }, async function (err, imageResult) {
+  if (err) return next(err);
+
+  // Delete the temporary file
+  fs.unlink(productImage.tempFilePath, err => {
+    if (err) throw err;
+  });
+
+  // ...
+});
+
+// Upload PDF to Cloudinary
+cloudinary.uploader.upload(productPDF.tempFilePath, { resource_type: "raw", public_id: pdfUUID }, async function (err, pdfResult) {
+  if (err) return next(err);
+
+  // Delete the temporary file
+  fs.unlink(productPDF.tempFilePath, err => {
+    if (err) throw err;
+  });
+
+  // ...
+});
+This will delete the temporary files after they have been uploaded to Cloudinary, keeping your tmp folder clean.

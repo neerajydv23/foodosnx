@@ -22,10 +22,9 @@ const userSchema = mongoose.Schema({
     type: String,
         unique: true,
         required: true,
-        trim: true, // Automatically trims whitespace from both ends
+        trim: true, 
         validate: {
             validator: function(value) {
-                // Check if the username contains any whitespace
                 return !/\s/.test(value);
             },
             message: 'Username must not contain spaces'
@@ -34,11 +33,13 @@ const userSchema = mongoose.Schema({
   fullname: {
     type: String,
     required: true,
+    trim: true
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    trim: true
   },
   contact:{
     type:String, 
